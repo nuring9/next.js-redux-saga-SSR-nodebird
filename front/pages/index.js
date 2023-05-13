@@ -6,8 +6,9 @@ import AppLayout from "../components/AppLayout";
 import PostForm from "../components/PostForm";
 import PostCard from "../components/PostCard";
 import { LOAD_POSTS_REQUEST } from "../reducers/post";
-import { LOAD_USER_REQUEST } from "../reducers/user";
+import { LOAD_MY_INFO_REQUEST } from "../reducers/user";
 import wrapper from "../store/configureStore";
+import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -54,8 +55,13 @@ const Home = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
+    const cookie = context.req ? context.req.headers.cookie : "";
+    axios.defaults.headers.Cookie = "";
+    if (context.req && cookie) {
+      axios.defaults.headers.Cookie = cookie;
+    }
     context.store.dispatch({
-      type: LOAD_USER_REQUEST,
+      type: LOAD_MY_INFO_REQUEST,
     });
     context.store.dispatch({
       type: LOAD_POSTS_REQUEST,
