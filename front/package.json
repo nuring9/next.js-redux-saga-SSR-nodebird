@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "antd": "^4.24.7",
     "axios": "^1.2.2",
+    "babel-plugin-styled-components": "^1.13.3",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "immer": "^9.0.17",
