@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
+
 import { Card, Popover, Button, Avatar, List, Comment } from "antd";
 import {
   RetweetOutlined,
@@ -68,6 +69,8 @@ const PostCard = ({ post }) => {
       data: post.id,
     });
   }, [id]);
+
+  if (!post) return <redirect to="/" />;
 
   const liked = post.Likers.find((v) => v.id === id);
 

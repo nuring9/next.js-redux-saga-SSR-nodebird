@@ -12,37 +12,46 @@ import { END } from "redux-saga";
 import axios from "axios";
 import Head from "next/head";
 
-// import { Redirect } from "react-router-dom";
 import wrapper from "../../store/configureStore";
 
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
+
   const { singlePost } = useSelector((state) => state.post);
 
   return (
     <AppLayout>
       <Head>
         <title>
-          {singlePost.User.nickname}
+          {singlePost ? singlePost.User.nickname : ""}
           님의 글
         </title>
-        <meta name="description" content={singlePost.content} />
+        <meta
+          name="description"
+          content={singlePost ? singlePost.content : ""}
+        />
         <meta
           property="og:title"
-          content={`${singlePost.User.nickname}님의 게시글`}
+          content={`${singlePost ? singlePost.User.nickname : ""}님의 게시글`}
         />
-        <meta property="og:description" content={singlePost.content} />
+        <meta
+          property="og:description"
+          content={singlePost ? singlePost.content : ""}
+        />
         <meta
           property="og:image"
           content={
-            singlePost.Images[0]
+            singlePost
+              ? singlePost.Images[0]
+              : ""
               ? singlePost.Images[0].src
               : "https://nodebird.com/favicon.ico"
           }
         />
         <meta property="og:url" content={`https://nodebird.com/post/${id}`} />
       </Head>
+
       <PostCard post={singlePost} />
     </AppLayout>
   );
