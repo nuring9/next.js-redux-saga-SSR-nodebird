@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 3060"
+    "dev": "next -p 3060",
+    "build": "ANALYZE=true NODE_ENV=production next build",
+    "start": "NODE_ENV=production next start -p 3060"
   },
   "author": "NuRi",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@next/bundle-analyzer": "^13.4.2",
     "@reduxjs/toolkit": "^1.9.1",
     "antd": "^4.24.7",
     "axios": "^1.2.2",
