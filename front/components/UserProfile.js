@@ -5,6 +5,8 @@ import { Card, Avatar, Button } from "antd";
 import { logoutRequestAction } from "../reducers/user";
 import styled from "styled-components";
 
+import Link from "next/link";
+
 const UserProfile = () => {
   const dispatch = useDispatch();
   const { me, logOutLoading } = useSelector((state) => state.user);
@@ -21,19 +23,31 @@ const UserProfile = () => {
     <Card
       actions={[
         <div key="twit">
-          좋아요
-          <br />
-          {me.Posts.length}
+          <Link href={`/user/${me.id}`}>
+            <a>
+              내 게시글
+              <br />
+              {me.Posts.length}
+            </a>
+          </Link>
         </div>,
         <div key="followings">
-          팔로잉
-          <br />
-          {me.Followings.length}
+          <Link href="/profile">
+            <a>
+              팔로잉
+              <br />
+              {me.Followings.length}
+            </a>
+          </Link>
         </div>,
         <div key="followings">
-          팔로워
-          <br />
-          {me.Followers.length}
+          <Link href="/profile">
+            <a>
+              팔로워
+              <br />
+              {me.Followers.length}
+            </a>
+          </Link>
         </div>,
       ]}
     >

@@ -2,9 +2,6 @@ import { all, fork, put, takeLatest, call } from "redux-saga/effects";
 import axios from "axios";
 
 import {
-  LOAD_MY_INFO_FAILURE,
-  LOAD_MY_INFO_REQUEST,
-  LOAD_MY_INFO_SUCCESS,
   CHANGE_NICKNAME_FAILURE,
   CHANGE_NICKNAME_REQUEST,
   CHANGE_NICKNAME_SUCCESS,
@@ -17,6 +14,8 @@ import {
   LOAD_FOLLOWINGS_FAILURE,
   LOAD_FOLLOWINGS_REQUEST,
   LOAD_FOLLOWINGS_SUCCESS,
+  LOAD_MY_INFO_REQUEST,
+  LOAD_MY_INFO_SUCCESS,
   LOAD_USER_FAILURE,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
@@ -35,6 +34,7 @@ import {
   UNFOLLOW_FAILURE,
   UNFOLLOW_REQUEST,
   UNFOLLOW_SUCCESS,
+  LOAD_MY_INFO_FAILURE,
 } from "../reducers/user";
 
 function removeFollowerAPI(data) {
@@ -124,6 +124,7 @@ function loadUserAPI(data) {
 function* loadUser(action) {
   try {
     const result = yield call(loadUserAPI, action.data);
+    console.log("loadUserData", result.data);
     yield put({
       type: LOAD_USER_SUCCESS,
       data: result.data,

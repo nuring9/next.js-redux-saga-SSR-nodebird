@@ -141,20 +141,6 @@ const reducer = (state = initialState, action) =>
         draft.loadFollowersLoading = false;
         draft.loadFollowersError = action.error;
         break;
-      case LOAD_USER_REQUEST:
-        draft.loadUserLoading = true;
-        draft.loadUserError = null;
-        draft.loadUserDone = false;
-        break;
-      case LOAD_USER_SUCCESS:
-        draft.loadUserLoading = false;
-        draft.userInfo = action.data;
-        draft.loadUserDone = true;
-        break;
-      case LOAD_USER_FAILURE:
-        draft.loadUserLoading = false;
-        draft.loadUserError = action.error;
-        break;
       case LOAD_MY_INFO_REQUEST:
         draft.loadMyInfoLoading = true;
         draft.loadMyInfoError = null;
@@ -168,6 +154,20 @@ const reducer = (state = initialState, action) =>
       case LOAD_MY_INFO_FAILURE:
         draft.loadMyInfoLoading = false;
         draft.loadMyInfoError = action.error;
+        break;
+      case LOAD_USER_REQUEST:
+        draft.loadUserLoading = true;
+        draft.loadUserError = null;
+        draft.loadUserDone = false;
+        break;
+      case LOAD_USER_SUCCESS:
+        draft.loadUserLoading = false;
+        draft.userInfo = action.data;
+        draft.loadUserDone = true;
+        break;
+      case LOAD_USER_FAILURE:
+        draft.loadUserLoading = false;
+        draft.loadUserError = action.error;
         break;
       case FOLLOW_REQUEST:
         draft.followLoading = true;

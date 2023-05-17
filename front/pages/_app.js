@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 
 import wrapper from "../store/configureStore";
 
-const NodeBird = ({ Component }) => (
+const nuri_NodeBird = ({ Component }) => (
   <>
     <Head>
       <meta charSet="utf-8" />
@@ -15,8 +15,8 @@ const NodeBird = ({ Component }) => (
   </>
 );
 
-NodeBird.propTypes = {
+nuri_NodeBird.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default wrapper.withRedux(NodeBird);
+export default wrapper.withRedux(nuri_NodeBird);
