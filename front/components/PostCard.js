@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 
 import Link from "next/link";
+import dayjs from "dayjs";
 
 import { Card, Popover, Button, Avatar, List, Comment } from "antd";
 import {
@@ -23,6 +24,8 @@ import {
   RETWEET_REQUEST,
 } from "../reducers/post";
 import FollowButton from "./FollowButton";
+
+dayjs.locale("ko"); // 한글 변경
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -131,6 +134,9 @@ const PostCard = ({ post }) => {
               )
             }
           >
+            <div style={{ float: "right" }}>
+              {dayjs(post.createdAt).format("YYYY.MM.DD")}
+            </div>
             <Card.Meta
               avatar={
                 <Link href={`/user/${post.Retweet.User.id}`} prefetch={false}>
@@ -144,17 +150,22 @@ const PostCard = ({ post }) => {
             />
           </Card>
         ) : (
-          <Card.Meta
-            avatar={
-              <Link href={`/user/${post.User.id}`} prefetch={false}>
-                <a>
-                  <Avatar>{post.User.nickname[0]}</Avatar>
-                </a>
-              </Link>
-            }
-            title={post.User.nickname}
-            description={<PostCardContent postData={post.content} />}
-          />
+          <>
+            <div style={{ float: "right" }}>
+              {dayjs(post.createdAt).format("YYYY.MM.DD")}
+            </div>
+            <Card.Meta
+              avatar={
+                <Link href={`/user/${post.User.id}`} prefetch={false}>
+                  <a>
+                    <Avatar>{post.User.nickname[0]}</Avatar>
+                  </a>
+                </Link>
+              }
+              title={post.User.nickname}
+              description={<PostCardContent postData={post.content} />}
+            />
+          </>
         )}
       </Card>
       {commentFormOpened && (
