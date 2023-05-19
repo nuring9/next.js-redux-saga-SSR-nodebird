@@ -126,7 +126,7 @@ const Signup = () => {
         </div>
         <div>
           <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>
-            노드버드 말을 잘 들을 것을 동의합니다.
+            회원가입 약관에 동의합니다.
           </Checkbox>
           {termError && <ErrorMessage>약관에 동의하셔야 합니다.</ErrorMessage>}
         </div>
