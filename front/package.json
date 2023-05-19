@@ -32,7 +32,8 @@
     "redux-saga": "^1.2.2",
     "shortid": "^2.2.16",
     "styled-components": "^5.3.6",
-    "swr": "^2.1.5"
+    "swr": "^2.1.5",
+    "webpack": "^5.83.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
